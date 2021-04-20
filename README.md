@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# React/Redux Todo App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+The app is live [Here](https://react-awesome-todo.netlify.app).
 
 ## Available Scripts
 
