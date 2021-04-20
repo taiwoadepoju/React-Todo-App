@@ -2,10 +2,17 @@ import useFetchTodos from 'hooks/useFetchTodos';
 import TodoList from 'views/TodoList';
 
 const TodoListContainer = () => {
-  const { data, isLoading, dispatchFetchTodos } = useFetchTodos();
+  const {
+    data, error, isLoading, dispatchFetchTodos,
+  } = useFetchTodos();
 
   return (
-    <TodoList data={data} isLoading={isLoading} handleFetchTodos={dispatchFetchTodos} />
+    <TodoList
+      data={data}
+      error={error}
+      isLoading={isLoading}
+      handleFetchTodos={dispatchFetchTodos}
+    />
   );
 };
 
