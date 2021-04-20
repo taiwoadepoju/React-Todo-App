@@ -27,7 +27,7 @@ const TodoList = ({ data, isLoading, handleFetchTodos }) => {
             {data.map((
               { title, completed },
               i,
-            ) => <TodoItem title={title} index={i} completed={completed} />)}
+            ) => <TodoItem title={title} index={i} completed={completed} key={`${title}${i + 1}`} />)}
           </div>
         </div>
       </div>
