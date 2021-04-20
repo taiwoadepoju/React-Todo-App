@@ -21,6 +21,11 @@ const AddNewTodo = () => {
               placeholder="Add new todo"
               value={newTodo}
               onChange={(e) => setNewTodo(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleAddNewTodo();
+                }
+              }}
             />
           </div>
           <div className="col-auto px-0 mx-0 mr-2">
