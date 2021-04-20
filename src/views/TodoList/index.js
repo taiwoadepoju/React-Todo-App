@@ -4,7 +4,9 @@ import Loader from 'components/Loader';
 import TodoItem from 'views/TodoList/TodoItem';
 import AddNewTodo from 'views/TodoList/AddNewTodo';
 
-const TodoList = ({ data, isLoading, handleFetchTodos }) => {
+const TodoList = ({
+  data, error, isLoading, handleFetchTodos,
+}) => {
   useEffect(() => {
     handleFetchTodos();
   }, [handleFetchTodos]);
@@ -22,6 +24,18 @@ const TodoList = ({ data, isLoading, handleFetchTodos }) => {
         <AddNewTodo />
         <div className="p-2 mx-4 border-black-25 border-bottom" />
         {isLoading && <Loader />}
+        {error && (
+        <p className="text-danger text-center pt-5">
+          An error occured while fetching todos!
+          <button
+            className="btn btn-danger ml-2"
+            type="button"
+            onClick={() => window.location.reload()}
+          >
+            Try again
+          </button>
+        </p>
+        )}
         <div className="row mx-1 px-5 pb-3 w-80">
           <div className="col mx-auto">
             {data.map((
@@ -35,6 +49,10 @@ const TodoList = ({ data, isLoading, handleFetchTodos }) => {
   );
 };
 
+TodoList.defaultProps = {
+  error: null,
+};
+
 TodoList.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
@@ -43,6 +61,7 @@ TodoList.propTypes = {
   })).isRequired,
   isLoading: PropTypes.bool.isRequired,
   handleFetchTodos: PropTypes.func.isRequired,
+  error: PropTypes.string,
 };
 
 export default TodoList;
